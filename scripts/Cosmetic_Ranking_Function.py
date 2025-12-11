@@ -9,14 +9,15 @@ ingredient_ranks = {
 
 # Now I have to make a function!
 def update_ingredient_ranks():
-    conn = sqlite3.connect(db_path)
+    conn = sqlite3.connect(db_path) #this connect the database with the code
     cur = conn.cursor()
 
-    cur.execute("SELECT rowid, Ingredients FROM cosmetics")
-    products = cur.fetchall()
+    cur.execute("SELECT rowid, Ingredients FROM cosmetics") #This statement excute saying all the products and their ingredients (note: they are separated by commas)
+    products = cur.fetchall()  #
 
     for product_id, ingredients_list_str in products:
         total_rank_score = 0.0
+        max_rank = 8 #Assuming the maxiumum rank for an ingredient is 8. Note (I am not sure if Think Dirty uses this scale or they use weighted average)
         
         if ingredients_list_str:
             ingredients = [item.strip() for item in ingredients_list_str.split(',')] #The ingredients in the row are comma separated!
