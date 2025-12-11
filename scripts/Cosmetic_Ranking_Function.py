@@ -5,7 +5,9 @@ ingredient_ranks = {
     "Water": 0,
     "CITRIC ACID": 1, #Mild Irritant
     "CHAMOMILE" : 4, #Pregnant Women Use with Caution, may cause uterine contractions
-    "Phenoxyethanol":5} #Potential Neurotoxin, may cause vomiting and diarrhea.
+    "Phenoxyethanol":5, #Potential Neurotoxin, may cause vomiting and diarrhea.
+    "Parabens": 6, #Hormone Disruptor
+    "Toluene" : 7} #Known Carcinogen, this found in nail polish, liked to developmental toxicity and neurological concerns.
 
 # Now I have to make a function!
 def update_ingredient_ranks():
