@@ -10,7 +10,7 @@ ingredient_ranks = {
     "Toluene" : 7, #Known Carcinogen, this found in nail polish, liked to developmental toxicity and neurological concerns.
     "Butylene Glycol": 3} #Low toxicity, irritant for sensitive skin.
 
-# Now I have to make a function!
+# Now I have to make a function! Goal: For each product, check its ingredients and assign a rank based on the HIGEST sumed ingredient rank found in the product but I will set the max as 8.
 def update_ingredient_ranks():
     conn = sqlite3.connect(db_path) #this connect the database with the code
     cur = conn.cursor()
@@ -26,7 +26,7 @@ def update_ingredient_ranks():
             ingredients = [item.strip() for item in ingredients_list_str.split(',')] #The ingredients in the row are comma separated!
             
             for ingredient in ingredients:
-                if ingredient in ingredient_ranks:
+                if ingredient in ingredient_ranks:          #I have to make sure the ingredient and ingredients dictionary match!
                     score = ingredient_ranks[ingredient]
 
                     if score > highest_rank:
@@ -40,7 +40,7 @@ def update_ingredient_ranks():
     WHERE rowid = ?
 """, (final_product_rank, product_id))
 
-    conn.commit()
+    conn.commit() #This saves the changes made to the database
     conn.close()
     print(f"Database ranks updated successfully for {len(products)} products.")
 
